@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
-import web from "./web.png";
+import react from "./react.png";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -20,22 +20,33 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import python from "./tech/python.png";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
+import Acmegrade from "./company/Acmegrade.png";
+import Tutedude from "./company/Tutedude.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import eventsphere from "./eventsphere.png";
+import Todo from "./Todo.png";
+import nova from "./nova.png";
+import Sales from "./Sales.png";
+
+
+
 
 export {
   logo,
   backend,
   creator,
   mobile,
-  web,
+  react,
+  python,
   github,
   menu,
   close,
@@ -59,4 +70,10 @@ export {
   carrent,
   jobit,
   tripguide,
+  eventsphere,
+  Todo,
+  nova,
+  Acmegrade,
+  Tutedude,
+Sales,
 };

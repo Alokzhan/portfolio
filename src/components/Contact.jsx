@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -8,7 +8,6 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
 const Contact = () => {
-  const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -27,22 +26,37 @@ const Contact = () => {
     });
   };
 
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!form.name || !form.email || !form.message) {
+      alert("Please fill in all fields.");
+      setLoading(false);
+      return;
+    }
+    if (!validateEmail(form.email)) {
+      alert("Please enter a valid email address.");
+      setLoading(false);
+      return;
+    }
     setLoading(true);
 
     emailjs
       .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        'service_qva1y84',
+        'template_7buo8oq',
         {
           from_name: form.name,
-          to_name: "JavaScript Mastery",
+          to_name: "Alok verma",
           from_email: form.email,
-          to_email: "sujata@jsmastery.pro",
+          to_email: "alokji814@gmail.com",
           message: form.message,
         },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        'hXQ9MJugXXWEPBk6n'
       )
       .then(
         () => {
@@ -57,9 +71,8 @@ const Contact = () => {
         },
         (error) => {
           setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
+          console.error("EmailJS Error:", error.text, error);
+          alert(`Ahh, something went wrong. Please try again. Error: ${error.text}`);
         }
       );
   };
@@ -76,7 +89,6 @@ const Contact = () => {
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
         <form
-          ref={formRef}
           onSubmit={handleSubmit}
           className='mt-12 flex flex-col gap-8'
         >
